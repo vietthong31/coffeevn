@@ -1,0 +1,38 @@
+label {
+  font-weight: 500;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='text'],
+input[type='url'],
+input[type='date'] {
+  background: #f6f8fb;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+input:focus {
+  border-color: black;
+  background-color: white;
+}
+
+input[type='submit'],
+.button,
+button {
+  width: fit-content;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background-color: #714d2d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.error {
+  min-height: 1rem;
+  color: #f33;
+}

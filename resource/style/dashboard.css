@@ -1,0 +1,49 @@
+#statistic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#statistic div {
+  display: flex;
+  flex-direction: column;
+  width: 24%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 2%;
+  padding-right: 0;
+  color: white;
+}
+
+#statistic div:nth-child(1) {
+  background-color: #eb5353;
+}
+
+#statistic div:nth-child(2) {
+  background-color: #ff8d29;
+}
+
+#statistic div:nth-child(3) {
+  background-color: #36ae7c;
+}
+
+.number {
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 0.8px;
+}
+
+@media screen and (max-width: 1024px) {
+  #statistic div {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #statistic {
+    row-gap: 1rem;
+  }
+  #statistic div {
+    width: 180px;
+  }
+}
