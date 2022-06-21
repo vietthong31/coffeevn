@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require_once 'db.php';
 if (isset($_GET['id'])) {
   $id = intval($_GET['id']);
   $stmt = $con->prepare("DELETE FROM bo_phan WHERE id = ?");
@@ -8,4 +8,6 @@ if (isset($_GET['id'])) {
   if ($result) {
     header("Location: /cafe/bophan.php");
   }
+} else {
+  header("Location: /cafe/bophan.php");
 }

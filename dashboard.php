@@ -1,3 +1,12 @@
+<?php
+require_once 'src/db.php';
+$nv = $con->query("SELECT * FROM nhan_vien");
+$soluongNV = $nv->num_rows;
+
+$sp = $con->query("SELECT * FROM san_pham");
+$soluongSP = $sp->num_rows;
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -18,15 +27,15 @@
     <div id='statistic'>
       <div>
         <span>Nhân viên</span>
-        <span class="number">300</span>
+        <span class="number"><?php echo $soluongNV ?></span>
       </div>
       <div>
         <span>Sản phẩm</span>
-        <span class="number">33</span>
+        <span class="number"><?php echo $soluongSP ?></span>
       </div>
       <div>
         <span>Doanh thu</span>
-        <span class="number">30.000</span>
+        <span class="number">0</span>
       </div>
     </div>
   </main>

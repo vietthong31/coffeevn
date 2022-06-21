@@ -6,11 +6,10 @@
   <nav class="mt-3 mb-auto">
     <ul class="mb-0">
       <li><a href="bophan.php">Bộ phận</a></li>
-      <li><a href="">Nhân viên</a></li>
+      <li><a href="nhanvien.php">Nhân viên</a></li>
       <li><a href="">Hóa đơn</a></li>
-      <li><a href="">Hóa đơn nhập</a></li>
-      <li><a href="">Sản phẩm</a></li>
-      <li><a href="">Danh mục</a></li>
+      <li><a href="sanpham.php">Sản phẩm</a></li>
+      <li><a href="danhmuc.php">Danh mục</a></li>
     </ul>
   </nav>
   <span id="signOut">

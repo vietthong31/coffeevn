@@ -46,14 +46,14 @@ if (isset($_POST["btn"])) {
       }
       ?>
     </em>
-    <form action="" method="post" class="login-form">
+    <form action="" method="post" class="form">
       <div class="form-field">
         <label for="username">Tài khoản</label>
-        <input type="text" name="tk" id="username" value="<?php if (isset($_POST["tk"])) echo $_POST["tk"] ?>">
+        <input type="text" name="tk" id="username" value="<?php echo $_POST['tk'] ?? "" ?>" autofocus>
       </div>
       <div class="form-field">
         <label for="pwd">Mật khẩu</label>
-        <input type="password" name="mk" id="pwd" value="<?php if (isset($_POST["mk"])) echo $_POST["mk"] ?>">
+        <input type="password" name="mk" id="pwd" value="<?php echo $_POST["mk"] ?? "" ?>">
       </div>
       <input type="submit" name="btn" id="" value="Đăng nhập">
     </form>

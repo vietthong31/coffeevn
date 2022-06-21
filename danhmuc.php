@@ -1,6 +1,6 @@
 <?php
 require 'src/db.php';
-$sql = "SELECT * FROM bo_phan";
+$sql = "SELECT * FROM danh_muc";
 $result = $con->query($sql);
 ?>
 
@@ -11,7 +11,7 @@ $result = $con->query($sql);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý bộ phận | coffeevn</title>
+  <title>Quản lý danh mục | coffeevn</title>
   <?php include 'component/head.html' ?>
 </head>
 
@@ -19,12 +19,11 @@ $result = $con->query($sql);
   <?php include 'component/header.php' ?>
   <?php include 'component/panel.php' ?>
   <main>
-    <h1>Quản lý bộ phận</h1>
-    <p><a href="addBoPhan.php">Thêm bộ phận</a></p>
+    <h1>Quản lý danh mục</h1>
     <table>
       <thead>
         <th>Mã</th>
-        <th>Tên bộ phận</th>
+        <th style="width: 20%;">Danh mục</th>
         <th>Mô tả</th>
         <th colspan="2" class="actions"></th>
       </thead>
@@ -35,7 +34,7 @@ $result = $con->query($sql);
             <td><?php echo $row['ten'] ?></td>
             <td><?php echo $row['mo_ta'] ?></td>
             <td class="action"><a href="src/deleteBoPhan.php?id=<?php echo $row['id'] ?>"><span class="bi bi-trash3"></span></a></td>
-            <td class="action"><a href="editBoPhan.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
+            <td class="action"><a href="editDanhMuc.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
           </tr>
         <?php endwhile ?>
       </tbody>

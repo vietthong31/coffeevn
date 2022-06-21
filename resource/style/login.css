@@ -27,6 +27,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  min-width: max-content;
   width: 400px;
   padding: 2rem;
   margin: auto;
@@ -36,34 +37,4 @@ main {
 
 h1 {
   color: #333;
-}
-
-.login-form .form-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-/* .login-form input {
-  height: 40px;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  color: #333;
-  margin-bottom: 20px;
-} */
-
-.login-form input[type='submit'] {
-  float: right;
-  background-color: #29586c;
-}
-
-.login-form input[type='submit']:hover {
-  box-shadow: 2px 2px 5px #555;
-  background-color: #267bb0;
-  cursor: pointer;
-}
-
-.login-form span > input:hover {
-  box-shadow: 2px 2px 5px #555;
 }
