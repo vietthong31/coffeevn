@@ -7,6 +7,9 @@ if (isset($_SESSION['login'])) {
   header("Location: dashboard.php");
 }
 
+$bo_phan = $con->query("SELECT * FROM bo_phan");
+$ca_lam_viec = $con->query("SELECT * FROM ca_lam_viec");
+
 $error = array();
 
 if (isset($_POST["btn"])) {
@@ -15,6 +18,9 @@ if (isset($_POST["btn"])) {
   $hoTen = $_POST['hoten'];
   $ngaySinh = $_POST['ngaysinh'];
   $queQuan = $_POST['quequan'];
+  $boPhan = $_POST['bophan'];
+  $caLam = $_POST['calam'];
+
   $currentDate = (new DateTime())->format('Y/m/d');
 
   if (empty($username) || empty($pwd) || empty($hoTen) || empty($ngaySinh)) {
@@ -36,11 +42,13 @@ if (isset($_POST["btn"])) {
     array_push($error, "Tài khoản đã tồn tại");
   }
 
-  if (!empty($error)) {
-    $sql = "INSERT INTO nhan_vien VALUES (null, ?, ?, ?, 4, 3, '$currentDate', ?, ?)";
+
+  if (empty($error)) {
+    $sql = "INSERT INTO nhan_vien VALUES (null, ?, ?, ?, ?, ?, '$currentDate', ?, ?)";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param('sssss', $hoTen, $ngaySinh, $queQuan, $username, $pwd);
+    $stmt->bind_param('sssiiss', $hoTen, $ngaySinh, $queQuan, $boPhan, $caLam, $username, $pwd);
     $success = $stmt->execute();
+
     if ($success) {
       $_SESSION['signupSuccess'] = true;
       header("Location: success.php");
@@ -66,7 +74,7 @@ if (isset($_POST["btn"])) {
 <body>
   <div id="bg-img"></div>
   <main>
-    <h1 class="mb-1">Quản trị mới</h1>
+    <h1 class="mb-1">Đăng ký</h1>
     <ul class="error">
       <?php
       if (isset($error)) {
@@ -76,7 +84,7 @@ if (isset($_POST["btn"])) {
       }
       ?>
     </ul>
-    <form action="" method="post" class="login-form">
+    <form action="" method="post" class="form">
       <div class="form-field">
         <label for="username" class="required">Tài khoản</label>
         <input type="text" name="tk" id="username" value="<?php if (isset($_POST["tk"])) echo $_POST["tk"] ?>" required>
@@ -101,7 +109,26 @@ if (isset($_POST["btn"])) {
         <label for="quequan">Quê quán</label>
         <input type="text" name="quequan" id="quequan" value="<?php if (isset($_POST["quequan"])) echo $_POST["quequan"] ?>">
       </div>
-      <input type="submit" name="btn" id="" value="Đăng ký">
+
+      <div class="form-field">
+        <label for="bophan">Bộ phận</label>
+        <select name="bophan" id="bophan" required>
+          <?php while ($row = $bo_phan->fetch_assoc()) : ?>
+            <option value="<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></option>
+          <?php endwhile ?>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="calam">Ca làm việc</label>
+        <select name="calam" id="calam" required>
+          <?php while ($row = $ca_lam_viec->fetch_assoc()) : ?>
+            <option value="<?php echo $row['id'] ?>"><?php echo $row['gio_bat_dau'] . ' đến ' . $row['gio_ket_thuc'] ?></option>
+          <?php endwhile ?>
+        </select>
+      </div>
+
+      <input type="submit" name="btn" value="Đăng ký">
     </form>
   </main>
 </body>

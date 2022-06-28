@@ -6,8 +6,8 @@ if (isset($_GET['id'])) {
   $stmt->bind_param("i", $id);
   $result = $stmt->execute();
   if ($result) {
-    header("Location: /cafe/bophan.php");
+    header("Location: /cafe/admin/bophan.php");
   }
 } else {
-  header("Location: /cafe/bophan.php");
+  header("Location: /cafe/admin/bophan.php");
 }

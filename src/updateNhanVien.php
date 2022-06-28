@@ -6,13 +6,12 @@ if (isset($_POST['id'])) {
   $hoten = $_POST['hoten'] ?? "";
   $ngaysinh = $_POST['ngaysinh'] ?? "";
   $quequan = $_POST['quequan'] ?? "";
-  $bophan = $_POST['bophan'] ?? "";
-  $calam = $_POST['calam'] ?? "";
+  $matkhau = $_POST['matkhau'] ?? "";
 
-  $update = "UPDATE nhan_vien SET ho_ten = ?, ngay_sinh = ?, que_quan = ?, id_bo_phan = ?, id_ca_lam = ? WHERE id = ?";
+  $update = "UPDATE nhan_vien SET ho_ten = ?, ngay_sinh = ?, que_quan = ?, mat_khau = ? WHERE id = ?";
   $stmt = $con->prepare($update);
-  $stmt->bind_param("ssssss", $hoten, $ngaysinh, $quequan, $bophan, $calam, $id);
+  $stmt->bind_param("sssss", $hoten, $ngaysinh, $quequan, $matkhau, $id);
   $stmt->execute();
 }
 
-header("Location: /cafe/nhanvien.php");
+header("Location: /cafe/account.php");

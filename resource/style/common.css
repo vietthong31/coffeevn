@@ -58,10 +58,6 @@ span#menu {
   margin-left: 0.5rem;
 }
 
-#menu:active {
-  background-color: #714d2d;
-}
-
 /* aside */
 #aside {
   position: sticky;
@@ -96,7 +92,9 @@ span#menu {
 
 /* main */
 main {
-  padding: 1rem 2rem 0;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 main.expand {
@@ -110,6 +108,11 @@ main h1 {
 /* table */
 table {
   width: 100%;
+}
+
+table.small th,
+table.small td {
+  font-size: 1rem;
 }
 
 th,
@@ -133,7 +136,7 @@ tr:nth-child(odd) {
 
 th,
 td {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 td.action {

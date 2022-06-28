@@ -7,12 +7,14 @@
 #statistic div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 24%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
   padding: 2%;
   padding-right: 0;
   color: white;
+  font-size: 1.1rem;
 }
 
 #statistic div:nth-child(1) {

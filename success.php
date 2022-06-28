@@ -23,7 +23,7 @@ if (!isset($_SESSION['signupSuccess'])) {
       <span class="bi bi-check-circle"></span>
       <h1>Thành công</h1>
     </div>
-    <p>Đăng ký quản trị viên mới thành công.<br /> <a href="index.php" class="signin">Đăng nhập</a></p>
+    <p>Đăng ký tài khoản thành công.<br /> <a href="index.php" class="signin">Đăng nhập</a></p>
   </main>
 </body>
 

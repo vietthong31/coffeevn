@@ -2,7 +2,11 @@
 session_start();
 
 if (isset($_SESSION['login'])) {
-  header("Location: dashboard.php");
+  if ($_SESSION['bophan'] == '4') {
+    header("Location: admin/dashboard.php");
+  } else {
+    header("Location: manage.php");
+  }
 }
 
 require_once "src/db.php";
@@ -15,9 +19,16 @@ if (isset($_POST["btn"])) {
 
   $result = mysqli_query($con, $sql) or die("Truy vấn bị lỗi!!!");
   if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     $_SESSION['login'] = true;
     $_SESSION['username'] = $username;
-    header("Location: dashboard.php");
+    $_SESSION['bophan'] = $row['id_bo_phan'];
+    $_SESSION['id_nhanvien'] = $row['id'];
+    if ($_SESSION['bophan'] == '4') {
+      header("Location: admin/dashboard.php");
+    } else {
+      header("Location: manage.php");
+    }
   } else {
     $error = $result->num_rows == 0 ? "Xem lại tài khoản/ mật khẩu" : "Truy vấn lỗi";
   }
@@ -55,6 +66,7 @@ if (isset($_POST["btn"])) {
         <label for="pwd">Mật khẩu</label>
         <input type="password" name="mk" id="pwd" value="<?php echo $_POST["mk"] ?? "" ?>">
       </div>
+      <a href="signup.php">Đăng ký</a>
       <input type="submit" name="btn" id="" value="Đăng nhập">
     </form>
   </main>

@@ -6,10 +6,12 @@ if (isset($_POST['id'])) {
   $ten = $_POST['ten'] ?? "";
   $mota = $_POST['mota'] ?? "";
 
-  $update = "UPDATE bo_phan SET ten = ?, mo_ta = ? WHERE id = ?";
-  $stmt = $con->prepare($update);
+  $sql = "UPDATE danh_muc SET ten = ?, mo_ta = ? WHERE id = ?";
+
+
+  $stmt = $con->prepare($sql);
   $stmt->bind_param("sss", $ten, $mota, $id);
   $stmt->execute();
 }
 
-header("Location: /cafe/admin/bophan.php");
+header("Location: /cafe/admin/danhmuc.php");

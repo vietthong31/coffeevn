@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'db.php';
 
 if (isset($_POST['id'])) {
@@ -25,4 +26,4 @@ if (isset($_POST['id'])) {
   }
 }
 
-header("Location: /cafe/sanpham.php");
+header("Location: /cafe/admin/sanpham.php?page=" . $_SESSION['sanpham_page']);

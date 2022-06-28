@@ -1,8 +1,14 @@
 /* form */
-.form .form-field {
+.form .form-field,
+.form-field {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+}
+
+input,
+select {
+  width: 100%;
 }
 
 /* .login-form input {
@@ -46,9 +52,8 @@ input[type='url'],
 input[type='date'],
 select,
 textarea {
-  background: #f6f8fb;
   outline: none;
-  border: 1px solid transparent;
+  border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
@@ -56,6 +61,10 @@ textarea {
 input:focus {
   border-color: black;
   background-color: white;
+}
+
+input:read-only {
+  background: #ddd;
 }
 
 input[type='submit'],
