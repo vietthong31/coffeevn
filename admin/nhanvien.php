@@ -1,6 +1,6 @@
 <?php
-
-require 'src/db.php';
+session_start();
+require '../src/db.php';
 $sql = "SELECT * FROM view_nhanvien_info";
 $result = $con->query($sql);
 ?>
@@ -13,15 +13,15 @@ $result = $con->query($sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý nhân viên | coffeevn</title>
-  <?php include 'component/head.html' ?>
+  <?php include '../component/head.html' ?>
 </head>
 
 <body>
-  <?php include 'component/header.php' ?>
-  <?php include 'component/panel.php' ?>
+  <?php include '../component/header.php' ?>
+  <?php include '../component/panel.php' ?>
   <main>
     <h1>Quản lý nhân viên</h1>
-    <p><a href="addNhanVien.php">Thêm nhân viên</a></p>
+    <p><a href="admin/addNhanVien.php">Thêm nhân viên</a></p>
     <table>
       <thead>
         <th>Mã</th>
@@ -30,7 +30,7 @@ $result = $con->query($sql);
         <th>Quê quán</th>
         <th>Bộ phận</th>
         <th>Ngày bắt đầu làm</th>
-        <th colspan="2" class="actions"></th>
+        <th>Tài khoản</th>
       </thead>
       <tbody>
         <?php while ($row = $result->fetch_assoc()) : ?>
@@ -41,21 +41,13 @@ $result = $con->query($sql);
             <td><?php echo $row['que_quan'] ?></td>
             <td><?php echo $row['bo_phan'] ?></td>
             <td><?php echo $row['ngay_bat_dau'] ?></td>
-
-            <td class="action">
-              <?php if (isset($_SESSION['username']) && $_SESSION['username'] != $row['tai_khoan']) : ?>
-                <a href="src/deleteBoPhan.php?id=<?php echo $row['id'] ?>"><span class="bi bi-trash3"></span></a>
-              <?php endif ?>
-            </td>
-            <td class="action">
-              <a href="editNhanVien.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a>
-            </td>
+            <td><?php echo $row['tai_khoan'] ?></td>
           </tr>
         <?php endwhile ?>
       </tbody>
     </table>
   </main>
-  <?php include 'component/script.html' ?>
+  <?php include '../component/script.html' ?>
 </body>
 
 </html>

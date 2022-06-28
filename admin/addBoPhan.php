@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "src/check_login.php";
-require_once "src/db.php";
+require_once "../src/check_login.php";
+require_once "../src/db.php";
 
 if (isset($_POST['add'])) {
   $sql = "INSERT INTO bo_phan (ten, mo_ta) VALUES (?, ?)";
@@ -22,14 +22,14 @@ if (isset($_POST['add'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thêm bộ phận</title>
-  <?php include 'component/head.html' ?>
+  <?php include '../component/head.html' ?>
   <link rel="stylesheet" href="resource/style/login.css">
 </head>
 
 <body>
   <div id='bg-img'></div>
   <main>
-    <a href="bophan.php"><span class="bi bi-arrow-left"></span>Về trang quản lý</a>
+    <a href="admin/bophan.php"><span class="bi bi-arrow-left"></span>Về trang quản lý</a>
     <h1 class="mb-1">Thêm bộ phận mới</h1>
 
     <form action="" method="post" class="form">

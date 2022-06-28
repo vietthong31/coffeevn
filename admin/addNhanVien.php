@@ -1,20 +1,25 @@
 <?php
 session_start();
-require_once "src/check_login.php";
-require_once "src/db.php";
-require_once "src/query_function.php";
+require_once "../src/check_login.php";
+require_once "../src/db.php";
+require_once "../src/query_function.php";
 
 $bo_phan = query_bophan();
 $ca_lam = query_calamviec();
 
 if (isset($_POST['add'])) {
-  $sql = "INSERT INTO nhan_vien VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+  $sql = "INSERT INTO nhan_vien VALUES (null, ?, ?, ?, ?, ?, ?, null, null)";
   $stmt = $con->prepare($sql);
   $hoten = $_POST['hoten'];
   $ngaysinh = $_POST['ngaysinh'];
   $quequan = $_POST['quequan'];
   $bophan = $_POST['bophan'];
   $calam = $_POST['calam'];
+  $currentDate = (new DateTime())->format('Y/m/d');
+
+  $stmt->bind_param("sssiis", $hoten, $ngaysinh, $quequan, $bophan, $calam, $currentDate);
+  $stmt->execute();
+  header("Location: nhanvien.php");
 }
 
 ?>
@@ -27,14 +32,14 @@ if (isset($_POST['add'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thêm nhân viên</title>
-  <?php include 'component/head.html' ?>
+  <?php include '..component/head.html' ?>
   <link rel="stylesheet" href="resource/style/login.css">
 </head>
 
 <body>
   <div id='bg-img'></div>
   <main>
-    <a href="bophan.php"><span class="bi bi-arrow-left"></span>Về trang quản lý</a>
+    <a href="admin/nhanvien.php"><span class="bi bi-arrow-left"></span>Về trang quản lý</a>
     <h1 class="mb-1">Thêm nhân viên mới</h1>
 
     <form action="" method="post" class="form">

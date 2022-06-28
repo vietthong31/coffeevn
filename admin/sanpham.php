@@ -1,5 +1,7 @@
 <?php
-require 'src/db.php';
+session_start();
+require '../src/db.php';
+include '../component/pagination.php';
 
 $limit = 5; // số dòng mỗi trang
 
@@ -12,6 +14,7 @@ if (!isset($_GET['page'])) {
 } else {
   $page = $_GET['page'];
 }
+$_SESSION['sanpham_page'] = $page;
 
 $initialPage = ($page - 1) * $limit; // tính index để giới hạn LIMIT
 
@@ -28,27 +31,18 @@ $result = $con->query($sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý sản phẩm | coffeevn</title>
-  <?php include 'component/head.html' ?>
+  <?php include '../component/head.html' ?>
 </head>
 
 <body>
-  <?php include 'component/header.php' ?>
-  <?php include 'component/panel.php' ?>
+  <?php include '../component/header.php' ?>
+  <?php include '../component/panel.php' ?>
   <main>
     <h1>Quản lý sản phẩm</h1>
 
-    <nav aria-label="product pagination" class="mt-2">
-      <ul class="pagination">
-        <?php
-        for ($pageNumber = 1; $pageNumber <= $totalPage; $pageNumber++) {
-          $active = ($pageNumber == $page) ? "active" : "";
-          echo "<li class='page-item $active'><a class='page-link' href='sanpham.php?page=$pageNumber'>$pageNumber</a></li>";
-        }
-        ?>
-      </ul>
-    </nav>
+    <p><a href="admin/addSanPham.php">Thêm sản phẩm</a></p>
 
-    <table>
+    <table class="mb-auto">
       <thead>
         <th>Mã</th>
         <th>Tên sản phẩm</th>
@@ -64,16 +58,18 @@ $result = $con->query($sql);
             <td><?php echo $row['ten'] ?></td>
             <td><?php echo $row['ten_danh_muc'] ?></td>
             <td><?php echo $row['don_gia'] ?></td>
-            <td><img src="<?php echo 'resource/img/' . $row['hinh_anh'] ?>" width="80" height="80"></td>
-            <td class="action"><a href="src/deleteBoPhan.php?id=<?php echo $row['id'] ?>"><span class="bi bi-trash3"></span></a></td>
-            <td class="action"><a href="editSanPham.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
+            <td><img src="<?php echo 'resource/img/' . ($row['hinh_anh'] == '' ? 'placeholder.png' : $row['hinh_anh']) ?>" width="80" height="80"></td>
+            <td class="action"><a href="src/deleteSanPham.php?id=<?php echo $row['id'] ?>"><span class="bi bi-trash3"></span></a></td>
+            <td class="action"><a href="admin/editSanPham.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
           </tr>
         <?php endwhile ?>
       </tbody>
     </table>
 
+    <?php echo pagination($totalPage, $page, "admin/sanpham.php?page=") ?>
+
   </main>
-  <?php include 'component/script.html' ?>
+  <?php include '../component/script.html' ?>
 </body>
 
 </html>
