@@ -1,0 +1,23 @@
+{
+  "name": "cafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vietthong31/coffeevn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vietthong31/coffeevn/issues"
+  },
+  "homepage": "https://github.com/vietthong31/coffeevn#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.3"
+  }
+}
