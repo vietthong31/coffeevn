@@ -64,7 +64,7 @@ $result = $con->query($sql);
             <td><?php echo $row['tong_tien'] ?></td>
             <td class="action"><a href="hoadon.php?id=<?php echo $row['id'] ?>"><span class="bi bi-eye"></span></a></td>
             <td class="action"><a href="src/deleteHoaDon.php?id=<?php echo $row['id'] ?>"><span class="bi bi-trash3"></span></a></td>
-            <td class="action"><a href="admin/editHoaDon.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
+            <td class="action"><a href="editHoaDon.php?id=<?php echo $row['id'] ?>"><span class="bi bi-pencil-square"></span></a></td>
           </tr>
         <?php endwhile ?>
       </tbody>

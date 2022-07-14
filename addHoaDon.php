@@ -59,7 +59,7 @@ if (isset($_POST['addBill'])) {
     <form action="src/insertHoaDon.php" method="post" class="form">
       <div class="form-field">
         <label>Ngày</label>
-        <input type="date" name="buydate" value="<?php echo date("Y-m-d"); ?>" readonly>
+        <input type="date" name="buydate" value="<?php echo date("Y-m-d"); ?>">
       </div>
       <div class="form-field">
         <label for="status">Tình trạng thanh toán</label>

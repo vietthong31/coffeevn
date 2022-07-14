@@ -13,10 +13,12 @@ $doanh_thu_thang = 0;
 
 
 while ($row = $hoa_don->fetch_assoc()) {
-  $tong_doanh_thu += $row['tong_tien'];
+  if ($row['tinh_trang'] == 'Đã thanh toán') {
+    $tong_doanh_thu += $row['tong_tien'];
 
-  if (date('m', strtotime($row['ngay'])) == date('m')) {
-    $doanh_thu_thang += $row['tong_tien'];
+    if (date('m', strtotime($row['ngay'])) == date('m')) {
+      $doanh_thu_thang += $row['tong_tien'];
+    }
   }
 }
 
